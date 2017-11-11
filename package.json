@@ -1,0 +1,101 @@
+{
+  "name": "auto-readme",
+  "version": "1.0.0",
+  "description": "Automatically create README.md contents",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/digitalsadhu/auto-readme.git"
+  },
+  "scripts": {
+    "test": "jest --coverage",
+    "lint:format": "eslint --fix .",
+    "lint": "eslint .",
+    "precommit": "lint-staged",
+    "cm": "git-cz",
+    "readme": "projectz compile"
+  },
+  "keywords": [
+    "readme",
+    "auto",
+    "generation",
+    "generate",
+    "automatic",
+    "docs",
+    "documentation"
+  ],
+  "author": "Richard Walker <digitalsadhu@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.1.0",
+    "eslint": "^4.10.0",
+    "eslint-config-finn": "^3.0.0",
+    "eslint-config-finn-prettier": "^3.0.1",
+    "husky": "^0.14.3",
+    "jest": "^21.2.1",
+    "lint-staged": "^4.3.0",
+    "prettier": "^1.8.2",
+    "projectz": "^1.4.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "clearMocks": true,
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "tabWidth": 4,
+    "overrides": [
+      {
+        "files": "*.json",
+        "options": {
+          "tabWidth": 2
+        }
+      },
+      {
+        "files": ".eslintrc",
+        "options": {
+          "parser": "json",
+          "tabWidth": 2
+        }
+      }
+    ]
+  },
+  "lint-staged": {
+    "*.js": ["eslint --fix --config ./.eslintrc", "git add"],
+    "{package.json,README.md,LICENSE.md}": ["projectz compile", "git add"],
+    "{*.json,*.md,.eslintrc}": [
+      "prettier --write *.md *.json .eslintrc",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "badges": {
+    "list": ["travisci", "npmversion", "daviddm", "daviddmdev"]
+  },
+  "dependencies": {
+    "@babel/preset-env": "^7.0.0-beta.31",
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-preset-react": "^6.24.1",
+    "get-pkg-repo": "^1.4.0",
+    "license.js": "^2.0.0-rc.1",
+    "react": "^16.1.0",
+    "react-dom": "^16.1.0",
+    "string": "^3.3.3",
+    "to-markdown": "^3.1.0"
+  }
+}
