@@ -72,7 +72,7 @@ Title display component. Determines the title from `package.json`. Additionally 
 _Example_
 
 ```jsx
-<Title titleCase humanize />
+<Title titleCase humanize />;
 ```
 
 #### Description
@@ -91,7 +91,7 @@ Badge display. Displays desired badges as specified in component properties. Use
 _Example_
 
 ```jsx
-<Badges travisci npmversion daviddm daviddmdev />
+<Badges travisci npmversion daviddm daviddmdev />;
 ```
 
 #### Install
@@ -107,13 +107,13 @@ Component properties are:
 _Example_
 
 ```jsx
-<Install />
+<Install />;
 ```
 
 _Example_
 
 ```jsx
-<Install title='Install instructions' yarn npm />
+<Install title="Install instructions" yarn npm />;
 ```
 
 #### License
@@ -123,13 +123,13 @@ License information display component. Determines license from `package.json` li
 _Example_ Creates an external LICENSE.md file and links to it.
 
 ```jsx
-<License />
+<License />;
 ```
 
 _Example_ Inlines license content
 
 ```jsx
-<License inline />
+<License inline />;
 ```
 
 #### Markdown
@@ -139,7 +139,7 @@ Component for including markdown content from external files. Useful so that you
 _Example_
 
 ```jsx
-<Markdown file='usage.md' />
+<Markdown file="usage.md" />;
 ```
 
 ## Contributing

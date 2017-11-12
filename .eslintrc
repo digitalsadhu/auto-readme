@@ -3,11 +3,7 @@
   "parserOptions": {
     "ecmaVersion": 2017
   },
-  "extends": [
-    "finn",
-    "finn/node",
-    "finn-prettier"
-  ],
+  "extends": ["finn", "finn/node", "finn-prettier"],
   "env": {
     "node": true,
     "jest": true
