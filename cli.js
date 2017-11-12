@@ -47,6 +47,24 @@ const md = toMarkdown(contents.replace(/<!-- -->/gm, ''), {
             filter: ['section', 'div'],
             replacement: content => content,
         },
+        {
+            filter(node) {
+                return (
+                    node.nodeName === 'PRE' &&
+                    node.firstChild.nodeName === 'CODE'
+                );
+            },
+            replacement(content, node) {
+                const className = node.firstChild.getAttribute('class');
+                if (/language-/.test(className)) {
+                    const type = className.replace('language-', '');
+                    return `\`\`\`${
+                        type
+                    }\n${node.firstChild.textContent.trim()}\n\`\`\`\n\n`;
+                }
+                return `\`\`\`\n${node.firstChild.textContent.trim()}\n\`\`\`\n\n`;
+            },
+        },
     ],
     gfm: true,
 });

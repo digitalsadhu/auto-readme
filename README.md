@@ -8,13 +8,13 @@ Automatically create README.md contents
 
 ### npm
 
-```
+```bash
 npm install auto-readme
 ```
 
 ### yarn
 
-```
+```bash
 yarn add auto-readme
 ```
 
@@ -26,7 +26,7 @@ This module is intended to be used to help make creating and maintaining readmes
 
 Define a template file
 
-```
+```js
 // readme.js
 
 import { Readme, Title, Description } from 'auto-readme'
@@ -37,21 +37,18 @@ export default () => (
         <Description>
     </Readme>
 )
-
 ```
 
-```
+```bash
 auto-readme ./readme.js README.md
-
 ```
 
 This will generate a README.md file with the the following contents:
 
-```
+```md
 # my-project-name
 
 This is a description of my project taken from package.json
-
 ```
 
 ### Components
@@ -74,9 +71,8 @@ Title display component. Determines the title from `package.json`. Additionally 
 
 _Example_
 
-```
+```jsx
 <Title titleCase humanize />
-
 ```
 
 #### Description
@@ -94,9 +90,8 @@ Badge display. Displays desired badges as specified in component properties. Use
 
 _Example_
 
-```
+```jsx
 <Badges travisci npmversion daviddm daviddmdev />
-
 ```
 
 #### Install
@@ -111,16 +106,14 @@ Component properties are:
 
 _Example_
 
-```
+```jsx
 <Install />
-
 ```
 
 _Example_
 
-```
+```jsx
 <Install title='Install instructions' yarn npm />
-
 ```
 
 #### License
@@ -129,16 +122,14 @@ License information display component. Determines license from `package.json` li
 
 _Example_ Creates an external LICENSE.md file and links to it.
 
-```
+```jsx
 <License />
-
 ```
 
 _Example_ Inlines license content
 
-```
+```jsx
 <License inline />
-
 ```
 
 #### Markdown
@@ -147,9 +138,8 @@ Component for including markdown content from external files. Useful so that you
 
 _Example_
 
-```
+```jsx
 <Markdown file='usage.md' />
-
 ```
 
 ## Contributing
