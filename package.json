@@ -1,6 +1,6 @@
 {
   "name": "auto-readme",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description":
     "A component library and cli for building automated project readme docs",
   "main": "index.js",
@@ -15,7 +15,9 @@
     "lint": "eslint .",
     "precommit": "lint-staged",
     "cm": "git-cz",
-    "readme": "./cli.js ./readme.js README.md"
+    "readme": "./cli.js ./readme.js README.md",
+    "semantic-release":
+      "semantic-release pre && npm publish && semantic-release post"
   },
   "keywords": [
     "readme",
@@ -37,7 +39,8 @@
     "husky": "^0.14.3",
     "jest": "^21.2.1",
     "lint-staged": "^4.3.0",
-    "prettier": "^1.8.2"
+    "prettier": "^1.8.2",
+    "semantic-release": "^8.2.0"
   },
   "jest": {
     "testEnvironment": "node",
