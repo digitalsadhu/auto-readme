@@ -10,11 +10,18 @@ export default props => {
         'package.json',
     ));
 
+    let organization = '';
+    if (typeof author === 'string') {
+        organization = author;
+    } else {
+        organization = author.name;
+    }
+
     const result = makeLicenseSync(license, {
         year: new Date().getFullYear(),
         project: name,
         description,
-        organization: author,
+        organization,
     });
 
     let text;
