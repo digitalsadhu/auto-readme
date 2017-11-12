@@ -1,7 +1,8 @@
 {
   "name": "auto-readme",
   "version": "1.0.0",
-  "description": "A component library and cli for building automated project readme docs",
+  "description":
+    "A component library and cli for building automated project readme docs",
   "main": "index.js",
   "bin": "cli.js",
   "repository": {
@@ -14,7 +15,7 @@
     "lint": "eslint .",
     "precommit": "lint-staged",
     "cm": "git-cz",
-    "readme": "./cli.js readme.js README.md"
+    "readme": "./cli.js ./readme.js README.md"
   },
   "keywords": [
     "readme",
@@ -71,14 +72,8 @@
     ]
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --fix --config ./.eslintrc",
-      "git add"
-    ],
-    "{package.json,*.md}": [
-      "npm run readme",
-      "git add"
-    ],
+    "*.js": ["eslint --fix --config ./.eslintrc", "git add"],
+    "{package.json,*.md}": ["npm run readme", "git add"],
     "{*.json,*.md,.eslintrc}": [
       "prettier --write *.md *.json .eslintrc",
       "git add"
