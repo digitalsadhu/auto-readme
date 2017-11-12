@@ -15,7 +15,7 @@ export default () => (
         <Title titleCase humanize />
         <Description />
         <Badges travisci daviddm daviddmdev npmversion />
-        <Install />
+        <Install title="Install instructions" yarn npm />
         <Markdown file="./usage.md" />
         <Markdown file="./contributing.md" />
         <License />
