@@ -1,7 +1,7 @@
 {
   "name": "auto-readme",
   "version": "1.0.0",
-  "description": "Automatically create README.md contents",
+  "description": "A component library and cli for building automated project readme docs",
   "main": "index.js",
   "bin": "cli.js",
   "repository": {
@@ -14,7 +14,7 @@
     "lint": "eslint .",
     "precommit": "lint-staged",
     "cm": "git-cz",
-    "readme": "projectz compile"
+    "readme": "./cli.js readme.js README.md"
   },
   "keywords": [
     "readme",
@@ -36,8 +36,7 @@
     "husky": "^0.14.3",
     "jest": "^21.2.1",
     "lint-staged": "^4.3.0",
-    "prettier": "^1.8.2",
-    "projectz": "^1.4.0"
+    "prettier": "^1.8.2"
   },
   "jest": {
     "testEnvironment": "node",
@@ -76,8 +75,8 @@
       "eslint --fix --config ./.eslintrc",
       "git add"
     ],
-    "{package.json,README.md,LICENSE.md}": [
-      "projectz compile",
+    "{package.json,*.md}": [
+      "npm run readme",
       "git add"
     ],
     "{*.json,*.md,.eslintrc}": [
@@ -89,14 +88,6 @@
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
-  },
-  "badges": {
-    "list": [
-      "travisci",
-      "npmversion",
-      "daviddm",
-      "daviddmdev"
-    ]
   },
   "dependencies": {
     "@babel/preset-env": "^7.0.0-beta.31",
