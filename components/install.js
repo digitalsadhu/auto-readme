@@ -14,7 +14,9 @@ export default function Title(props) {
         yarn = (
             <div>
                 <h3>yarn</h3>
-                <code data-type="bash">yarn add {name}</code>
+                <pre>
+                    <code className="language-bash">yarn add {name}</code>
+                </pre>
             </div>
         );
     }
@@ -23,7 +25,9 @@ export default function Title(props) {
         npm = (
             <div>
                 <h3>npm</h3>
-                <code data-type="bash">npm install {name}</code>
+                <pre>
+                    <code className="language-bash">npm install {name}</code>
+                </pre>
             </div>
         );
     }
@@ -32,7 +36,9 @@ export default function Title(props) {
         npm = (
             <div>
                 <h3>npm</h3>
-                <code data-type="bash">npm install {name}</code>
+                <pre>
+                    <code className="language-bash">npm install {name}</code>
+                </pre>
             </div>
         );
     }

@@ -40,7 +40,6 @@ if (existsSync(require.resolve(cli.input[0]))) {
 
 spinner.text = 'Rendering components';
 const contents = renderToString(createElement(Readme));
-
 spinner.text = 'Converting to markdown';
 const md = toMarkdown(contents.replace(/<!-- -->/gm, ''), {
     converters: [
@@ -48,21 +47,19 @@ const md = toMarkdown(contents.replace(/<!-- -->/gm, ''), {
             filter: ['section', 'div'],
             replacement: content => content,
         },
-        {
-            filter: ['code'],
-            replacement: (content, node) => {
-                const type = node.getAttribute('data-type');
-                return `\`\`\`${type}\n${content}\n\`\`\``;
-            },
-        },
     ],
+    gfm: true,
 });
 
-spinner.text = `Writing to file ${resolve(__dirname, cli.input[1])}`;
-writeFileSync(resolve(__dirname, cli.input[1]), md);
+if (cli.input[1]) {
+    spinner.text = `Writing to file ${resolve(__dirname, cli.input[1])}`;
+    writeFileSync(resolve(__dirname, cli.input[1]), md);
+    spinner.text = `Markdown contents successfully written to file ${resolve(
+        __dirname,
+        cli.input[1]
+    )}`;
+} else {
+    console.log(md);
+}
 
-spinner.text = `Markdown contents successfully written to file ${resolve(
-    __dirname,
-    cli.input[1]
-)}`;
 spinner.succeed();
