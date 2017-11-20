@@ -1,73 +1,28 @@
 import React from 'react';
 import { resolve } from 'path';
 import getPkgRepo from 'get-pkg-repo';
+import DavidDM from './badges/daviddm';
+import DavidDMDev from './badges/daviddmdev';
+import NpmVersion from './badges/npmversion';
+import TravisCI from './badges/travisci';
 
 const badgeRenderers = {
     travisci(value, options) {
         const { user, project } = options;
-        let branch = 'master';
-        if (typeof value === 'string') {
-            branch = value;
-        }
-        return (
-            <a
-                href={`http://travis-ci.org/${user}/${project}`}
-                title="Check this project's build status on TravisCI"
-            >
-                <img
-                    src={`https://img.shields.io/travis/${user}/${project}/${
-                        branch
-                    }.svg`}
-                    alt="Travis CI Build Status"
-                />
-            </a>
-        );
+        const branch = typeof value === 'string' ? value : 'master';
+        return <TravisCI branch={branch} user={user} project={project} />;
     },
     npmversion(value, options) {
         const { project } = options;
-        return (
-            <a
-                href={`https://npmjs.org/package/${project}`}
-                title="View this project on NPM"
-            >
-                <img
-                    src={`https://img.shields.io/npm/v/${project}.svg`}
-                    alt="NPM version"
-                />
-            </a>
-        );
+        return <NpmVersion project={project} />;
     },
     daviddm(value, options) {
         const { user, project } = options;
-        return (
-            <a
-                href={`https://david-dm.org/${user}/${project}`}
-                title="View the status of this project's dependencies on DavidDM"
-            >
-                <img
-                    src={`https://img.shields.io/david/${user}/${project}.svg`}
-                    alt="Dependency Status"
-                />
-            </a>
-        );
+        return <DavidDM user={user} project={project} />;
     },
     daviddmdev(value, options) {
         const { user, project } = options;
-        return (
-            <a
-                href={`https://david-dm.org/${user}/${
-                    project
-                }#info=devDependencies`}
-                title="View the status of this project's development dependencies on DavidDM"
-            >
-                <img
-                    src={`https://img.shields.io/david/dev/${user}/${
-                        project
-                    }.svg`}
-                    alt="Dev Dependency Status"
-                />
-            </a>
-        );
+        return <DavidDMDev user={user} project={project} />;
     },
 };
 
@@ -86,6 +41,7 @@ export default function Badges(props) {
 
     for (const [key, value] of Object.entries(props)) {
         badges.push(badgeRenderers[key](value, { user, project }));
+        badges.push(' ');
     }
 
     return badges;
