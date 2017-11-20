@@ -72,13 +72,13 @@ const badgeRenderers = {
 };
 
 export default function Badges(props) {
-    let pkg = require(resolve(process.cwd(), 'package.json'));
+    const pkg = require(resolve(process.cwd(), 'package.json'));
     const repo = getPkgRepo(pkg);
     const { user, project } = repo;
 
     if (!pkg.repository) {
         throw new Error(
-            `Expected property 'respository' to be defined in package.json when attempting to create badges but was not found.`,
+            `Expected property 'respository' to be defined in package.json when attempting to create badges but was not found.`
         );
     }
 

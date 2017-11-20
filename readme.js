@@ -3,14 +3,13 @@ import {
     Readme,
     Title,
     Badges,
-    TOC,
     License,
     Description,
     Markdown,
     Install,
 } from './components';
 
-export default () => (
+const ReadmeComponent = () => (
     <Readme>
         <Title titleCase humanize />
         <Description />
@@ -21,3 +20,5 @@ export default () => (
         <License />
     </Readme>
 );
+
+export default ReadmeComponent;

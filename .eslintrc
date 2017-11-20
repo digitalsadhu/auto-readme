@@ -1,11 +1,19 @@
 {
   "root": true,
   "parserOptions": {
-    "ecmaVersion": 2017
+    "ecmaVersion": 2017,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true,
+      "modules": true
+    }
   },
-  "extends": ["finn", "finn/node", "finn-prettier"],
+  "plugins": ["react"],
+  "extends": ["finn", "finn/node", "finn-prettier", "plugin:react/recommended"],
   "env": {
     "node": true,
-    "jest": true
+    "jest": true,
+    "browser": true
   }
 }

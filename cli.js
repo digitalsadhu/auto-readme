@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-'use strict';
 
 const meow = require('meow');
 const ora = require('ora');
@@ -26,11 +25,11 @@ const cli = meow(
 
 const spinner = ora('Starting').start();
 
-spinner.text = `Checking if file ${require.resolve(cli.input[0])} exists`;
+spinner.text = `Checking if file ${resolve(cli.input[0])} exists`;
 let Readme;
-if (existsSync(require.resolve(cli.input[0]))) {
-    spinner.text = `Reading from file ${require.resolve(cli.input[0])}`;
-    const readme = require(cli.input[0]);
+if (existsSync(resolve(cli.input[0]))) {
+    spinner.text = `Reading from file ${resolve(cli.input[0])}`;
+    const readme = require(resolve(cli.input[0]));
     Readme = readme.default;
 } else {
     throw new Error(

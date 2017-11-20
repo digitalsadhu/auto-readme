@@ -2,6 +2,7 @@ import React from 'react';
 import { resolve } from 'path';
 import { readFileSync } from 'fs';
 import ReactMarkdown from 'react-markdown';
+import PropTypes from 'prop-types';
 
 export default function Markdown(props) {
     const filePath = resolve(process.cwd(), props.file);
@@ -15,3 +16,7 @@ export default function Markdown(props) {
         </div>
     );
 }
+
+Markdown.propTypes = {
+    file: PropTypes.string,
+};

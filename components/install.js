@@ -1,9 +1,9 @@
 import React from 'react';
 import { resolve } from 'path';
-import ReactMarkdown from 'react-markdown';
+import PropTypes from 'prop-types';
 
 export default function Title(props) {
-    let { name } = require(resolve(process.cwd(), 'package.json'));
+    const { name } = require(resolve(process.cwd(), 'package.json'));
     let { title, yarn, npm } = props;
 
     if (!title) {
@@ -21,18 +21,7 @@ export default function Title(props) {
         );
     }
 
-    if (npm) {
-        npm = (
-            <div>
-                <h3>npm</h3>
-                <pre>
-                    <code className="language-bash">npm install {name}</code>
-                </pre>
-            </div>
-        );
-    }
-
-    if (!npm && !yarn) {
+    if (npm || !yarn) {
         npm = (
             <div>
                 <h3>npm</h3>
@@ -48,8 +37,12 @@ export default function Title(props) {
             <h2>{title}</h2>
             {npm}
             {yarn}
-            <br />
-            <br />
         </div>
     );
 }
+
+Title.propTypes = {
+    title: PropTypes.string,
+    yarn: PropTypes.bool,
+    npm: PropTypes.bool,
+};
