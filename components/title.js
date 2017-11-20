@@ -1,30 +1,36 @@
 import React from 'react';
-import _s from 'string';
+import {
+    capitalize as cap,
+    dasherize as dash,
+    humanize as hu,
+    titleize as ti,
+    underscored as und,
+} from 'underscore.string';
 import { resolve } from 'path';
 import PropTypes from 'prop-types';
 
 export default function Title(props) {
-    const { capitalize, dasherize, humanize, titleCase, underscore } = props;
+    const { capitalize, dasherize, humanize, titleize, underscored } = props;
     let { name } = require(resolve(process.cwd(), 'package.json'));
 
     if (capitalize) {
-        name = _s(name).capitalize().s;
+        name = cap(name);
     }
 
     if (dasherize) {
-        name = _s(name).dasherize().s;
+        name = dash(name);
     }
 
     if (humanize) {
-        name = _s(name).humanize().s;
+        name = hu(name);
     }
 
-    if (titleCase) {
-        name = _s(name).titleCase().s;
+    if (titleize) {
+        name = ti(name);
     }
 
-    if (underscore) {
-        name = _s(name).underscore().s;
+    if (underscored) {
+        name = und(name);
     }
 
     return <h1>{name}</h1>;
@@ -34,6 +40,6 @@ Title.propTypes = {
     capitalize: PropTypes.bool,
     dasherize: PropTypes.bool,
     humanize: PropTypes.bool,
-    titleCase: PropTypes.bool,
-    underscore: PropTypes.bool,
+    titleize: PropTypes.bool,
+    underscored: PropTypes.bool,
 };

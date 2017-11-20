@@ -11,7 +11,7 @@ import {
 
 const ReadmeComponent = () => (
     <Readme>
-        <Title titleCase humanize />
+        <Title humanize titleize />
         <Description />
         <Badges travisci daviddm daviddmdev npmversion />
         <Install title="Install instructions" yarn npm />
