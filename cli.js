@@ -44,7 +44,7 @@ const md = toMarkdown(contents.replace(/<!-- -->/gm, ''), {
     converters: [
         {
             filter: ['section', 'div'],
-            replacement: content => content,
+            replacement: content => `${content}\n\n`,
         },
         {
             filter(node) {
